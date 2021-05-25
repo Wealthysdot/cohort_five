@@ -1,12 +1,31 @@
 import React, { useState } from 'react'
 
-const Input = () => {
+const Input = ({ label, dataKey, getData, icon}) => {
     const [text, setText] = useState('')
+
+    const inputContainer ={
+        position: 'relative',
+        marginBottom: '10px'
+    }
+
+    const inputIcon ={
+        position: 'absolute',
+        right: '15px',
+        top: '40px',
+        color: 'gray',
+        fontsize: '20px'
+    }
+
+    const updateText = (value) => {
+        if (dataKey) getData(dataKey.toLowerCase(), value)
+        setText(value)
+    }
+
     return (
-        <div className= "form-control">
-            <label htmlFor="text">Text</label>
+        <div style= {inputContainer}>
+            <label htmlFor="text">{label}</label>
             <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text..."/>
-            <h5>{text}</h5>
+            <i className= "material-icons" style= {inputIcon}>{icon}</i>
         </div>
     )
 }
