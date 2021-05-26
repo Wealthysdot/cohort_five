@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 
+
 const Input = ({ label, dataKey, getData, icon}) => {
-    const [text, setText] = useState('')
+    const [text, setText] = useState('');
 
     const inputContainer ={
         position: 'relative',
         marginBottom: '10px'
     }
 
-    const inputIcon ={
+    const inputIcon = {
         position: 'absolute',
         right: '15px',
-        top: '40px',
+        top: '25px',
         color: 'gray',
         fontsize: '20px'
     }
@@ -24,7 +25,7 @@ const Input = ({ label, dataKey, getData, icon}) => {
     return (
         <div style= {inputContainer}>
             <label htmlFor="text">{label}</label>
-            <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text..."/>
+            <input type="text" value={text} onChange={(e) => updateText(e.target.value)} placeholder="Enter text..."/>
             <i className= "material-icons" style= {inputIcon}>{icon}</i>
         </div>
     )

@@ -1,13 +1,16 @@
-const Button = ({ color }) => {
-    const buttonStyle={
+const Button = ({ color, text, width, outline, action }) => {
+
+    const borderOutline = `1px solid ${color}` 
+
+    const buttonStyle = {
         cursor:'pointer',
-        backgroundColor:'black',
-        color:'#fff',
-        border:0,
+        backgroundColor: outline ? "white" : color,
+        color: outline ? color : '#fff',
+        border: outline ? borderOutline : 0,
         display:'block',
-        fontSize:'16px',
+        fontSize:'15px',
         padding:'15px',
-        width:'100%',
+        width: width,
         textTransform: 'upperCase',
         borderRadius: '4px'
     }
@@ -15,7 +18,7 @@ const Button = ({ color }) => {
 
 
     return (
-        <button style={buttonStyle}>SIGN IN</button>
+        <button style={buttonStyle} onClick={action}>{text}</button>
     )
 }
 
